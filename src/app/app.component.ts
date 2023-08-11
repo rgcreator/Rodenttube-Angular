@@ -44,13 +44,25 @@ const song: String [] =  [
 
 function getRandomsong() {
   let audio = document.getElementById('audio') as HTMLAudioElement;
-  audio.src = song[Math.floor(Math.random() * 25)].toString();
-  audio.autoplay = true;
+  let randomsong = song[Math.floor(Math.random() * song.length)].toString();
+  audio.src = randomsong;
   audio.load();
   audio.play();
-  if (audio.ended == true) { 
-    window.location.reload();
-  }
+  let tilte = randomsong.replace("../assets/muziek/", "");
+  tilte = tilte.replace(".mp3", "");	
+  tilte = tilte.replace(".ogg", "");	
+  let author = document.getElementById("author") as HTMLTitleElement;
+  author.innerHTML = "FC Knaagdier";
+  let next = document.getElementById("new-song") as HTMLButtonElement;
+  next.onclick = () => {
+    getRandomsong();
+  };
+
+let titletext = document.getElementById("title") as HTMLTitleElement;
+  titletext.innerHTML = tilte;
+  audio.onended = function() {
+window.location.reload();
+}
 }
 
 //Load on run
@@ -60,7 +72,19 @@ window.onload = () => {
   audio.src = randomsong;
   audio.load();
   audio.play();
-if (audio.currentTime = audio.duration) {
-    window.location.reload();
-}
+  let tilte = randomsong.replace("../assets/muziek/", "");
+  tilte = tilte.replace(".mp3", "");	
+  tilte = tilte.replace(".ogg", "");	
+  let author = document.getElementById("author") as HTMLTitleElement;
+  author.innerHTML = "FC Knaagdier";
+  let next = document.getElementById("new-song") as HTMLButtonElement;
+  next.onclick = () => {
+    getRandomsong();
+  };
+
+let titletext = document.getElementById("title") as HTMLTitleElement;
+  titletext.innerHTML = tilte;
+  audio.onended = function() {
+window.location.reload();
+  };
 }
