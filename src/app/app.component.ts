@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -48,18 +48,19 @@ function getRandomsong() {
   audio.autoplay = true;
   audio.load();
   audio.play();
+  if (audio.ended == true) { 
+    window.location.reload();
+  }
 }
+
 //Load on run
 window.onload = () => {
   let audio = document.getElementById('audio') as HTMLAudioElement;
-  audio.src = song[Math.floor(Math.random() * 25)].toString();
-  audio.autoplay = true;
+  let randomsong = song[Math.floor(Math.random() * song.length)].toString();
+  audio.src = randomsong;
   audio.load();
   audio.play();
+if (audio.currentTime = audio.duration) {
+    window.location.reload();
 }
-let audio = document.getElementById('audio') as HTMLAudioElement;
-audio.addEventListener('ended', getRandomsong);
-
-function parseString(arg0: number) {
-throw new Error("Function not implemented.");
 }
