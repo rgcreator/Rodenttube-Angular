@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { MusicComponent } from './play music/music.component';
+import { HomeComponent } from './home';
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [
+        BrowserModule,
+        AppRoutingModule
+    ],
+    declarations: [
+        MusicComponent,
+        HomeComponent,
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppRoutingModule { }
+export class AppModule { }
